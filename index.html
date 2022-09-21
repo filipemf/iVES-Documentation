@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <title>iVES | Documentação</title>
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/stroke.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="js/syntax-highlighter/styles/shCore.css" media="all">
+    <link rel="stylesheet" type="text/css" href="js/syntax-highlighter/styles/shThemeRDark.css" media="all">
+
+    <!-- CUSTOM -->
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+
+    <script>
+        var mybutton = document.getElementById("myBtn");
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+        function topFunction() {
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+            document.documentElement.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelector('#mode').addEventListener('click',()=>{
+                document.querySelector('html').classList.toggle('dark');
+            })
+        });
+
+
+    </script>
+
+    <div id="wrapper">
+        <div class="container">
+
+            <section id="top" class="section docs-heading">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="big-title text-center">
+                            <h1>iVES</h1>
+                            <p class="lead">Documentação do Middleware iVES</p>
+                        </div>
+                        <!-- end title -->
+                    </div>
+                    <!-- end 12 -->
+                </div>
+                <!-- end row -->
+
+                <hr>
+
+            </section>
+            <!-- end section -->
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <nav class="docs-sidebar" data-spy="affix" data-offset-top="300" data-offset-bottom="200" role="navigation">
+                        <ul class="nav">
+                            <li><a href="#line1">Como instalar o iVES</a></li>
+                            <li><a href="#line2">Iniciando</a></li>
+                            <li><a href="#line3">Funcionamento</a></li>
+                            <li><a href="#line4">Distributions</a></li>
+                            <li><a href="#line5">Arquivos</a></li>
+                            <li><a href="#line6">LLRP e BRI</a></li>
+                            <li><a href="#line7">Readers</a>
+                                <ul class="nav">
+                                    <li><a href="#line7_1">SHIPPING LANES PISTA X-X</a></li>
+                                    <li><a href="#line7_2">CHECK_IN_BRI</a></li>
+                                    <li><a href="#line7_3">FALSO_POSITIVO</a></li>
+                                    <li><a href="#line7_4">CHECK_OUT</a></li>
+                                    <li><a href="#line7_5">CVP_GATE_BRI</a></li>
+                                    <li><a href="#line7_6">CHECK_IN_BRI</a></li>
+                                    <li><a href="#line7_7">CVP_MADT_1 BRI</a></li>
+                                    <li><a href="#line7_8">CVP_MADT_2 BRI</a></li>
+                                    <li><a href="#line7_9">CVP_RETOQUE</a></li>
+                                    <li><a href="#line7_10">CVU MADU SECUNDARIO</a></li>
+                                    <li><a href="#line7_11">CVU_GATE BRI</a></li>
+                                    <li><a href="#line7_12">CVU_MADT_1 BRI</a></li>
+                                    <li><a href="#line7_13">CVU_MADT_2 BRI</a></li>
+                                    <li><a href="#line7_14">MADU PRIMARIO CVP</a></li>
+                                    <li><a href="#line7_15">MADU SECUNDARIO</a></li>
+                                    <li><a href="#line7_16">PATIO P5</a></li>
+                                    <li><a href="#line7_17">SHIPPING_BUFFER_X</a></li>
+                                    <li><a href="#line7_18">ZBKP  CHECKIN</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#line8">Erros Comuns</a></li>
+                            <li><a href="#line11">Licença</a></li>
+                        </ul>
+                    </nav >
+                </div>
+                <div class="col-md-9">
+                    <section class="welcome">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                               <h2 class="dark-text">Introdução<hr></h2>
+                                <div class="row">
+
+                                    <div class="col-md-12 full">
+                                        <div>
+                                            <ul>
+                                                <li><strong>Nome: </strong>Documentação middleware iVES</li>
+                                                <li><strong>Versão: </strong> v1.0</li>
+                                                <li><strong>Autores: </strong> <a href="http:127.0.0.1" target="_blank">Maikol Kogawa; Filipe Ferreira</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <hr>
+                                        <div>
+                                            <p>
+                                                Documentação do middleware iVES. Guia de funcionamento, instalação, funções, e como resolver erros mais comuns.
+                                            </p>
+
+                                            <!-- <h4>Requisitos</h4>
+                                            <p>Os requisitos para instação e funcionamento do software são os abaixo:</p>
+                                            <ol>
+                                                <li>requisito</li>
+                                                <li>requisito</li>
+                                                <li>requisito</li>
+                                            </ol> -->
+                                            <!-- <div class="intro2 clearfix">
+                                                <p><i class="fa fa-exclamation-triangle"></i> Be careful while editing the template. If not edited properly, the design layout may break completely.
+                                                    <br> No support is provided for faulty customization.
+                                                </p>
+                                            </div> -->
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- end row -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="line1" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Como instalar o iVES <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div>
+                            <p>Converse com o Maikol ou com o Filipe e solicite o instalador. Após isso, inicie o arquivo Setup.exe e aguarde o final da instalação para continuar.</p>
+
+                            <img src="images/instalacao_1.png">
+                            <img src="images/instalacao_2.png">
+                            <img src="images/instalacao_3.png">
+                        </div>
+
+                        <hr>
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line2" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Iniciando <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Após terminar a instalação, certifique-se que o serviço iVES Device Engine está funcionando conforma mostra a imagem abaixo.</p>
+                                <img src="images/servico_ives.png">
+                                <p>Após isso, você poderá começar a utilizar o middleware iVES. Inicie o arquivo <strong>manager.exe</strong> para começar a mexer no programa</p>
+                                <p>Para a realização de testes, utilize o programa <strong>example.exe</strong></p>
+                                <img src="images/programas.png">
+                                <p>Caminho para o programa: <strong>Program Files (x86)\T-Systems\Ives</strong>. Ou o caminho personalizado que você escolheu durante a instalação.</p>
+                            </div>
+                        </div>
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line3" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Funcionamento <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <h4><strong>Sensor</strong></h4>
+
+                        <p>Quando um sensor é acusado, ele está dentro do distribution group do GPI no campo GPI Report Group.</p>
+
+                        
+                        <hr>
+
+
+                        <h4><strong>Processo de Produção</strong></h4>
+                        <img src="images/processo_de_producao.png">
+
+
+                       <hr>
+                        
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line4" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Distributions <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <h4><strong>Distribution</strong></h4>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Para cada leitor que é criado no middleware associado com uma estação dentro da planta da Renault, como por exemplo, CVU_MADT_1, SHIPPING LANES BRI, entre outros, são criadas configurações para o leitor contidos nas abas ReaderConfig e ROSpec, onde estão contidas informações de potência, uso de GPIs (laços indutivos, alarmes, etc).</p>
+                                <p>As regras de negócios, ou seja, o fluxo dos dados que são lidos pelos leitores RFID e que são distribuídos para as diferentes aplicações, como comunicação com o ALR, PSF, envio de alertas, erros ou ainda acionamento de dispositivos como semáforos é feita através de distributions. </p>
+                                <p>Os distributions  são linhas de comandos que podem ter diversas tipos de saídas, inclusive combinadas como é o caso do tipo MULTIPLE.</p>
+                                <p>É possivel configurar os distributions acessando o menu: <strong>Manager -> Distribution</strong>. Conforme podemos observar na figura abaixo.</p>
+                            </div>
+                            <img src="images/distributions_manager.png">
+                        </div>
+
+                        <h4><strong>Distribution Groups</strong></h4>
+                        <p>Os distributions são linhas de comandos que podem ter diversas tipos de saídas, inclusive combinadas como é o caso do tipo MULTIPLE. </p>
+                        <p>É possivel configurar os distributions groups acessando o menu: <strong>Manager -> Distribution Group</strong>. Conforme podemos observar na figura abaixo.</p>
+                        <img src="images/distributions_groups.png">
+
+                        <h4><strong>Opções de Saída</strong></h4>
+                        <p>As opções de saída dos distributions são as seguintes:</p>
+                        <img src="images/saidas_distributions.png">
+                        <p>No caso da opções Multiple, como dito anteriormente, é possivel ter varias saidas.</p>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line5" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Arquivos <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <p><strong>RenaultXML</strong> Usado para fábrica principal e o CMU é pra fabrica da antiga Nissan. Dentro do arquivo tem as partes de replicação e os comandos da impressora. Esse arquivo possui as funções que o programa usa pra saber as ordens de produção</p>
+                                <p>Caminho para o arquivo: <strong>Program Files (x86)\T-Systems\Ives</strong>. Ou o caminho personalizado que você escolheu durante a instalação. Arquivo no formato XML.</p>
+                                <img src="images/arquivo_renault.png">
+                            </div>
+                            <!-- end col -->
+
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line6" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">LLRP e BRI <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <p>As diferenças entre o LLRP e o BRI tem haver com os comandos do GPIO que tem que acionar tudo de uma vez (talvez). Alguns tem acionamento por antena e ter mais de um laço indutivo, estão como BRI, pois os LLRP só permitem uma entrada, um laço indutivo. Além disso, também há a diferenteça no ROSpec, onde no BRI a escrita é em <strong>Initialization Commands</strong> e no LLRP o <strong>XML</strong></p>
+                                
+                                <p>BRI:</p>
+                                <img src="images/exemplo_bri.png">
+                                <p>LLRP:</p>
+                                <img src="images/exemplo_llrp.png">
+
+                                <p>É possível ver onde a ativação por laço indutivo nos BRI está ativada pelo campo ReaderConfig, que vai estar com o comando: 100|true|MYSTOPTRIGGER|0.</p>
+                                <p>Para <strong>desativar o laço indutivo</strong>, devemos apagar tudo abaixo do TRIGGER RESET. Os comandos são: SET MYREAD, SET MYSTOP, e os TRIGGERs, que são responsáveis por fazer a ativação e as desativações. Ele ativa quando o GPI 1 ou 2 estiver acionado e desativa se os dois estiverem desligados. Se um dos dois não estiver desligado ele não desliga a antena. Após isso entra no ReaderConfig e clica em Load Default.</p>
+                            </div>
+                            <!-- end col -->
+
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line7" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Readers <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_1">Campos (Fields)</h4>
+    
+                                <img src="images/reader_fields.png">
+                                
+                                <p><strong>General: </strong> Configurações gerais do leitor</p>
+                                <p><strong>Antenna: </strong> lorem ipsun.</p>
+                                <p><strong>ReaderConfig: </strong> Configurações do leitor.</p>
+                                <p><strong>ROSpec: </strong> Reader Operation Specification. Conjunto de configurações da forma de operação do leitor</p>
+                                <!-- <p><strong>AccessSpec: </strong> lorem ipsun.</p> -->
+                                <p><strong>Distribution Groups: </strong> lorem ipsun.</p>
+                                <p><strong>TAG FILTER: </strong>serve para fazer o filtro.</p>
+                                <!-- <p><strong>CHECK Q ASSURANCE: </strong>vai no banco e insere no banco, chama procedure, que retorna 0 ou 1. Retornando zero ele chama outra procedure e manda imprimir. NECESSARIO OLHAR AS PROCURES.</p> -->
+
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_1">SHIPPING LANES X-X </h4>
+                                <p>Expedition lanes.</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_2">CHECK_IN_BRI </h4>
+                                <p>CHECK IN SHIPPING CAMINHOES - 1 antena - CVP PATIO 009 - PRINCIPAL.</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_3">FALSO_POSITIVO </h4>
+                                <p>Atualmente não funcionando. Desativado. Processo de gravação de escrita, o operador tem um coletor que é uma aplicação/ ele pega o coletor, lê o código de barras que é o chassi, que vai pro middlware. Esse possui um processo rodando que possui uma integração com um sistema de produção. Ele busca em uma fila a ordem dos carros que vai ser produzida. Então ele lê, manda pra impressora e vai para os arquivos do middleware.</p>
+                                
+                                <img src="images/falsos_positivos.png">
+
+                                <p>Necessário pois no começo do projeto tinham muitos erros de tag morta. Para garantir a fila de produção, para ver o cara não errou, e que todas as tags estavam certas. Os carros iam passando e tinha um leitor no final da linha de produção pra verificar se estava tudo certo. Em caso de erro reimprimir a etiqueta. FALSO POSITIVO DESATIVO. Provavelmente dando erro na fila, na impressão e no banco. Para resolver, precisa verificar o processo e zerar a fila dele. Ele ficava acumulando fila no banco de dados 
+                                    Hoje eles imprimem usando o coletor ou usando uma base de reimpressão que é diretamente conectada no coletor, sem passar pelo middleware.
+                                </p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_4">CHECK_OUT </h4>
+                                <p>CHECK OUT SHIPPING CAMINHOES - 3 antenas - CVP PATIO 010 - PRINCIPAL.</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_5">CVP_GATE_BRI </h4>
+                                <p>EntradaSaida PATIO (ANT 3 e 4 Casa Amarela) - CVP PATIO 001 - PRINCIPAL</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_6">CHECK_IN_BRI </h4>
+                                <p>CHECK IN SHIPPING CAMINHOES - 1 antena - CVP PATIO 009 - PRINCIPAL.</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_7">CVP_MADT_1 BRI </h4>
+                                <p>MADC VP - PISTA ESQUERDA e CENTRAL - CVP MON 193 - PRINCIPAL</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_8">CVP_MADT_2 BRI </h4>
+                                <p>MADC VP - PISTA DIREITA - CVP MON 194 - PRINCIPAL</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_9">CVP_RETOQUE </h4>
+                                <p>RETOQUE CVP</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_10">CVU MADU SECUNDARIO </h4>
+                                <p>CVU MADU SECUNDARIO - SEM MAPA - NAO EXISTE NO SERVIDOR 19</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_11">CVU_GATE BRI </h4>
+                                <p>PATIO DA CVU ENTRADA E SAIDA</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_12">CVU_MADT_1 BRI </h4>
+                                <p>MADC VU PISTA DIREITA - CVU MON 153 - PRINCIPAL</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_13">CVU_MADT_2 BRI </h4>
+                                <p>MADC VU PISTA ESQUERDA - CVU MON 154 - PRINCIPAL</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_14">MADU PRIMARIO CVP </h4>
+                                <p>DESATIVADO - SEM MAPA (recolhido estoque) - BACKUP</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_15">MADU SECUNDARIO </h4>
+                                <p>DESATIVADO - SEM MAPA (recolhido estoque) - BACKUP</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_16">PATIO P5 </h4>
+                                <p>DESATIVADO Leitor Patio P5 - CVP MON 196 - BACKUP</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_17">SHIPPING_BUFFER_X </h4>
+                                <p>Shipping Buffer Pista Esquerda (X=1), Diretira (X=2) - CVP PATIO 002, 003 - BACKUP</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h4 id="line7_18">ZBKP  CHECKIN </h4>
+                                <p>copy from CHECK_IN_BRI</p>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <hr>
+
+
+
+                    </section>
+                    <!-- end section -->
+
+                    
+
+                    <section id="line8" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Erros Comuns <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+
+                        <p><strong>ON FAILURE GROUP</strong>. Se der alarme, o leitor vai mandar aviso pra esse grupo definido aqui. O distribution group das antenas fica no campo DISTRIBUTION GROUP. No conceito dos group, podemos ter várias distribuições como SAP, RP, PCE, etc. Em cada group, há um método, e no caso do tipo multiple, pode ser mais de um método definido. O processo é: ele insere a TAGID no banco e chama o distribution no método definido aqui, como por exemplo em REST. Esse último método é que faz a integração com o ALR.</p>
+
+                        <h4><strong>Shipping Lanes</strong></h4>
+
+                        <p>Não está lendo ou precisa aumentar o Shipping Lanes. E no MADT. Se não estiver no log, o cara na fabrica pode ter passado com os vidros baixos, ou a tag pode estar com algum problema</p>
+                        <p><strong>ALR: </strong>Defini uma vaga para o veículo no pátio. Quando o veículo já está no Shipping Lane, ele verifica se ele está indo para o caminhão correto.</p>
+
+                        
+                        <hr>
+
+
+                        
+                        <h4><strong>Problemas Farol</strong></h4>
+
+                        <p>Exemplo: Passaram o caro e não foi: Olhar os logs e procure por esse comando buscando pelo chassi do veículo a ser analisado</p>
+                        <img src="images/log.png">
+                        <p>Analisando esse comando, podemos ver que ele foi lido, o chassi foi processado e o comando veio como true. Nesse exemplo, parece estar tudo certo, então podemos testar se esta funcionando.  Para fazer isso abrimos o arquivo example.exe (pode ser que funcione apenas para o LLRP) e fazemos o seguinte:</p>
+                        <p>Programa aberto -> Commands -> Write GPO -> Digitar o IP do servidor. Caso esteja na fábrica, o IP é 127.0.01. Normalmente você já vai estar dentro do servidor -> Reader Name -> Colocar o nome do reader desejado. Ex: CVP_BRI -> Value (0 – 15) -> O 0 ou o 15 aciona todos os sinais. Então desde os dois comandos -> Timeout (MS) -> 5000. Isso pro LLRP, no BRI é so colocar os números desejados.</p>
+                        
+                        <hr>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+
+                    <section id="line11" class="section">
+
+                        <div class="row">
+                            <div class="col-md-12 left-align">
+                                <h2 class="dark-text">Licença <hr></h2>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                               <p>Software sobre licensa</p>
+                            
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                    </section>
+                    <!-- end section -->
+                </div>
+                <!-- // end .col -->
+
+            </div>
+            <!-- // end .row -->
+
+        </div>
+        <!-- // end container -->
+
+    </div>
+    <!-- end wrapper -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/retina.js"></script>
+    <script src="js/jquery.fitvids.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+
+    <!-- CUSTOM PLUGINS -->
+    <script src="js/custom.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="js/syntax-highlighter/scripts/shCore.js"></script>
+    <script src="js/syntax-highlighter/scripts/shBrushXml.js"></script>
+    <script src="js/syntax-highlighter/scripts/shBrushCss.js"></script>
+    <script src="js/syntax-highlighter/scripts/shBrushJScript.js"></script>
+
+</body>
+
+</html>
